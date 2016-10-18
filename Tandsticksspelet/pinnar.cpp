@@ -28,8 +28,9 @@ UPPGIFT: Returnerar en sträng av längd stringWidth som illustrerar nbrSticks
          stickString(25, 30) blir "||||| ||||| ||||| ||||| ||||| "
 
 ******************************************************************/
-string stickString(int nbr, int length)
-{
+
+// Denna behövs egentligen inte. Har flyttat den till min klass StickGame, men ragtest vill ha den här.
+string stickString(int nbr, int length){
 	string stickStr = "";
 	for (int i = 0; i < nbr; i++){
 		if (i % 5 == 4){
@@ -39,7 +40,7 @@ string stickString(int nbr, int length)
 		stickStr += '|';
 	}
 	stickStr += stringRepeat(" ", length - stickStr.length());
-    return stickStr;
+	return stickStr;
 }
 
 class StickGame{
@@ -47,18 +48,54 @@ public:
 	StickGame(int startSticks):
 		_startStickPile(startSticks),
 		_stickPile(_startStickPile){}
+	string stickString(int nbr, int length){
+		string stickStr = "";
+		for (int i = 0; i < nbr; i++){
+			if (i % 5 == 4){
+				stickStr += "| ";
+				continue;
+			}
+			stickStr += '|';
+		}
+		stickStr += stringRepeat(" ", length - stickStr.length());
+		return stickStr;
+	}
+
+	int getMove(){
+		int myMove = 0;
+		while (myMove < 1 || myMove > 2){
+			cin.clear();
+			fflush(stdin);
+			cin >> myMove;
+			if (myMove < 1 || myMove > 2){
+				cout << "Du måste plocka 1 eller 2 stickor" << endl;
+			}
+		}
+		return myMove;
+	}
+
+	int computerMove(){
+		if (_stickPile <= 0){
+			return 0;
+		}
+		if (_stickPile <= 2){
+			return _stickPile;
+		}
+		return (1 + rand() % 2);
+	}
+
 	void run(){
 		while (_stickPile > 0){
 			cout << "Aktuell hög: ";
 			cout << stickString(_stickPile, 32);
 			cout << "Hur många vill du plocka?";
-			int userMove = getMove(_stickPile);
+			int userMove = getMove();
 			_stickPile -= userMove;
 			if (_stickPile <= 0){
 				cout << "Du vann, turgubbe!" << endl;
 				break;
 			}
-			int myMove = computerMove(_stickPile);
+			int myMove = computerMove();
 			cout << "Jag tar " << myMove << endl;
 			_stickPile -= myMove;
 			if (_stickPile <= 0){
@@ -80,18 +117,9 @@ UPPGIFT: Låter användaren spela ett parti pinne mot datorn
 ******************************************************************/
 void playGame()
 {
-	StickGame game(15 + (rand() % 11));
+	StickGame game(15 + rand() % 11);
 	game.run();
-
-// TODO: 
-// Implementera! Dela gärna upp den i flera funktioner så att koden blir snygg
-// och välstrukturerad.
-
-// det är ok att låna koden från gföreläsningen!
-
-// det är meningen att du skall anropa din egen  stickString funktion
-
-}// playGame
+}
 
 
 void main()
