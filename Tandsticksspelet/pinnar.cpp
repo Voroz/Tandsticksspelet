@@ -42,6 +42,37 @@ string stickString(int nbr, int length)
     return stickStr;
 }
 
+class StickGame{
+public:
+	StickGame(int startSticks):
+		_startStickPile(startSticks),
+		_stickPile(_startStickPile){}
+	void run(){
+		while (_stickPile > 0){
+			cout << "Aktuell hög: ";
+			cout << stickString(_stickPile, 32);
+			cout << "Hur många vill du plocka?";
+			int userMove = getMove(_stickPile);
+			_stickPile -= userMove;
+			if (_stickPile <= 0){
+				cout << "Du vann, turgubbe!" << endl;
+				break;
+			}
+			int myMove = computerMove(_stickPile);
+			cout << "Jag tar " << myMove << endl;
+			_stickPile -= myMove;
+			if (_stickPile <= 0){
+				cout << "Jag vann, looooser!!" << endl;
+				break;
+			}
+		}
+	}
+
+private:
+	int _startStickPile;
+	int _stickPile;
+};
+
 /*****************************************************************
 ANROP:   playGame();
 VERSION: xxxxx xx
@@ -49,9 +80,9 @@ UPPGIFT: Låter användaren spela ett parti pinne mot datorn
 ******************************************************************/
 void playGame()
 {
-	cout << stickString(20, 30) << "test" << endl;
-	cout << stickString(7, 30) << "test" << endl;
-	cout << stickString(16, 30) << "test" << endl;
+	StickGame game(15 + (rand() % 11));
+	game.run();
+
 // TODO: 
 // Implementera! Dela gärna upp den i flera funktioner så att koden blir snygg
 // och välstrukturerad.
@@ -66,7 +97,6 @@ void playGame()
 void main()
 { setlocale( LC_ALL, "swedish");
 
-  // TODO: Ändra till ditt eget namn och de sista 4 siffrorna i ditt personnummer
   ragnarsTest("Jonny 2472");
 
   while (true)
