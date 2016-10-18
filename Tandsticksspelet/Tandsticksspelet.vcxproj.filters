@@ -15,24 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\ragtest.cpp">
+    <ClCompile Include="ragtest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\stdafx.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\pinnar.cpp">
+    <ClCompile Include="pinnar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\pinnar.h">
+    <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\ragtest.h">
+    <ClInclude Include="pinnar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\stdafx.h">
+    <ClInclude Include="ragtest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

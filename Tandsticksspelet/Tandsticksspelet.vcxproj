@@ -10,6 +10,16 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pinnar.cpp" />
+    <ClCompile Include="ragtest.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pinnar.h" />
+    <ClInclude Include="ragtest.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{69B6AC9D-AB1A-4DE7-9735-A399F5EAF9F6}</ProjectGuid>
     <RootNamespace>Tandsticksspelet</RootNamespace>
@@ -63,16 +73,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\pinnar.cpp" />
-    <ClCompile Include="..\ragtest.cpp" />
-    <ClCompile Include="..\stdafx.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\pinnar.h" />
-    <ClInclude Include="..\ragtest.h" />
-    <ClInclude Include="..\stdafx.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
