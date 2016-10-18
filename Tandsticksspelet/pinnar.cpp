@@ -9,6 +9,15 @@
 
 using std::string;
 
+
+string stringRepeat(string str, int amount){
+	string repeatedStr = "";
+	for (int i = 0; i < amount; i++){
+		repeatedStr += str;
+	}
+	return repeatedStr;
+}
+
 /*****************************************************************
 ANROP:   str = stickString(nbrSticks, stringWidth);
 VERSION: xxx
@@ -21,10 +30,16 @@ UPPGIFT: Returnerar en sträng av längd stringWidth som illustrerar nbrSticks
 ******************************************************************/
 string stickString(int nbr, int length)
 {
-
-    // TODO implementera denna funktion
-    // 
-    return "||||| ||  ";
+	string stickStr = "";
+	for (int i = 0; i < nbr; i++){
+		if (i % 5 == 4){
+			stickStr += "| ";
+			continue;
+		}
+		stickStr += '|';
+	}
+	stickStr += stringRepeat(" ", length - stickStr.length());
+    return stickStr;
 }
 
 /*****************************************************************
@@ -34,7 +49,9 @@ UPPGIFT: Låter användaren spela ett parti pinne mot datorn
 ******************************************************************/
 void playGame()
 {
-   
+	cout << stickString(20, 30) << "test" << endl;
+	cout << stickString(7, 30) << "test" << endl;
+	cout << stickString(16, 30) << "test" << endl;
 // TODO: 
 // Implementera! Dela gärna upp den i flera funktioner så att koden blir snygg
 // och välstrukturerad.
@@ -50,7 +67,7 @@ void main()
 { setlocale( LC_ALL, "swedish");
 
   // TODO: Ändra till ditt eget namn och de sista 4 siffrorna i ditt personnummer
-  ragnarsTest("Homer 1234");
+  ragnarsTest("Jonny 2472");
 
   while (true)
   {
